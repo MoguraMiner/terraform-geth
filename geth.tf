@@ -6,15 +6,15 @@ provider "aws" {
 }
 
 resource "aws_instance" "mogura-geth" {
-  ami = "ami-2757f631"
+  ami = "ami-01341617"
   instance_type = "${var.instance_type}"
-  availability_zone = "${var.region}"
+  availability_zone = "${var.region}${var.availability_zone}"
 }
 
 resource "aws_ebs_volume" "mogura-geth-hdd"{
-   size = "60"
+   size = "500"
    type = "st1"
-   availability_zone = "${var.region}"
+   availability_zone = "${var.region}${var.availability_zone}"
 }
 
 resource "aws_volume_attachment" "ebs_att" {
