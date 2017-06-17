@@ -7,7 +7,7 @@ provider "aws" {
 
 resource "aws_instance" "mogura-geth" {
   ami = "ami-2757f631"
-  instance_type = "t2.micro"
+  instance_type = "${var.instance_type}"
   availability_zone = "${var.region}"
 }
 
