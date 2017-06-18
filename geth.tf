@@ -73,12 +73,13 @@ resource "aws_instance" "mogura-geth" {
   instance_type = "${var.instance_type}"
   availability_zone = "${var.region}${var.availability_zone}"
   key_name = "personal-key"
-  security_groups =["${aws_security_group.mogura-geth-security-group.name}"],
+  security_groups =["${aws_security_group.mogura-geth-security-group.name}"]
   tags {
     Name = "Mogura-Geth Node"
-  },
+  }
+
    provisioner "remote-exec" {
-     inline = ["sudo docker run -p 8545:8545 -p 30303:30303 iknowhtml/mogura-geth:latest"],
+     inline = ["sudo docker run -p 8545:8545 -p 30303:30303 iknowhtml/mogura-geth:latest"]
      connection {
             user = "ubuntu"
             private_key = "${file("${var.private_key_path}")}"
@@ -90,7 +91,7 @@ resource "aws_instance" "mogura-geth" {
 resource "aws_ebs_volume" "mogura-geth-hdd"{
    size = "500"
    type = "st1"
-   availability_zone = "${var.region}${var.availability_zone}",
+   availability_zone = "${var.region}${var.availability_zone}"
    tags{
      Name = "Mogura-Geth HDD Volume"
    }
@@ -100,5 +101,5 @@ resource "aws_volume_attachment" "ebs_att" {
   device_name="/dev/sdf"
   volume_id = "${aws_ebs_volume.mogura-geth-hdd.id}"
   instance_id = "${aws_instance.mogura-geth.id}"
-  skip_destroy = true,
+  skip_destroy = true
 }
