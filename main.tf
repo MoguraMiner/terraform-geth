@@ -74,17 +74,10 @@ resource "aws_instance" "mogura-geth" {
   availability_zone = "${var.region}${var.availability_zone}"
   key_name = "personal-key"
   security_groups =["${aws_security_group.mogura-geth-security-group.name}"]
+  user_data = "${file("mount_volume.sh")}"
+
   tags {
     Name = "Mogura-Geth Node"
-  }
-
-   provisioner "remote-exec" {
-     inline = ["sudo docker run -p 8545:8545 -p 30303:30303 iknowhtml/mogura-geth:latest"]
-     connection {
-            user = "ubuntu"
-            private_key = "${file("${var.private_key_path}")}"
-            host = "${self.public_ip}"
-    }
   }
 }
 

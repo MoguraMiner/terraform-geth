@@ -10,7 +10,7 @@ variable "instance_type"{
   default = "t2.micro"
 }
 variable "ami"{
-  default = "ami-46ebc950"
+  default = "ami-2b06283d"
 }
 variable "private_key_path"{
   default = "~/.ssh/id_rsa"
