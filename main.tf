@@ -74,7 +74,7 @@ resource "aws_instance" "mogura-geth" {
   availability_zone = "${var.region}${var.availability_zone}"
   key_name = "personal-key"
   security_groups =["${aws_security_group.mogura-geth-security-group.name}"]
-  user_data = "${file("mount_volume.sh")}"
+  user_data = "${file("bootstrap.sh")}"
 
   tags {
     Name = "Mogura-Geth Node"
