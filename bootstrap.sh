@@ -1,5 +1,4 @@
 #!/bin/bash
-sudo apt-get -y update
 sudo mkfs -t ext4 /dev/xvdf
 sudo mkdir -p /data
 sudo mount /dev/xvdf /data
