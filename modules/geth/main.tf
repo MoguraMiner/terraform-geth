@@ -3,6 +3,7 @@ provider "aws" {
   secret_key = "${var.secret_key}"
   region = "${var.region}"
 }
+
 resource "aws_security_group" "mogura-geth-security-group" {
   name        = "mogura-geth-security-group"
   description = "Allow SSH, HTTP/HTTPS, JSON-RPC and Ethereum traffic"
@@ -68,13 +69,17 @@ resource "aws_security_group" "mogura-geth-security-group" {
   }
 }
 
+resource "aws_eip" "ip" {
+  instance = "${aws_instance.mogura-geth.id}"
+}
+
 resource "aws_instance" "mogura-geth" {
   ami = "${var.ami}"
   instance_type = "${var.instance_type}"
   availability_zone = "${var.region}${var.availability_zone}"
   key_name = "personal-key"
   security_groups =["${aws_security_group.mogura-geth-security-group.name}"]
-  user_data = "${file("bootstrap.sh")}"
+  user_data = "${file("${path.module}/bootstrap.sh")}"
 
   tags {
     Name = "Mogura-Geth Node"
