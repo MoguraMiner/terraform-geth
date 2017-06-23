@@ -69,10 +69,6 @@ resource "aws_security_group" "mogura-geth-security-group" {
   }
 }
 
-resource "aws_eip" "ip" {
-  instance = "${aws_instance.mogura-geth.id}"
-}
-
 resource "aws_instance" "mogura-geth" {
   ami = "${var.ami}"
   instance_type = "${var.instance_type}"

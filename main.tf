@@ -19,3 +19,7 @@ module "geth" {
 resource "aws_eip" "ip" {
   instance = "${module.geth.instance_id}"
 }
+
+output "eip"{
+  value = "${aws_eip.ip.public_ip}"
+}
