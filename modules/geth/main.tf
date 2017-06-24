@@ -104,7 +104,7 @@ resource "aws_ebs_volume" "mogura-geth-hdd"{
 }
 
 resource "aws_volume_attachment" "ebs_att" {
-  device_name = "/dev/sdf"
+  device_name ="/dev/sdf"
   volume_id = "${aws_ebs_volume.mogura-geth-hdd.id}"
   instance_id = "${aws_instance.mogura-geth.id}"
   skip_destroy = true
