@@ -9,7 +9,7 @@ variable "availability_zone" {
   default = "a"
 }
 variable "spot_price" {
-  default = "0.00"
+  default = "0.32"
 }
 
 variable "capacity" {
@@ -17,7 +17,7 @@ variable "capacity" {
 }
 
 variable "allocation_strategy" {
-  default = "lowestPrice"
+  default = "diversified"
 }
 
 variable "instance_type"{
@@ -25,5 +25,5 @@ variable "instance_type"{
 }
 
 variable "ami"{
-  default = "ami-96edc380"
+  default = "ami-2ecdf838"
 }
