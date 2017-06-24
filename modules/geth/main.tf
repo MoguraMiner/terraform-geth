@@ -5,78 +5,78 @@ provider "aws" {
 }
 
 resource "aws_security_group" "mogura-geth-security-group" {
-  name        = "mogura-geth-security-group"
+  name = "mogura-geth-security-group"
   description = "Allow SSH, HTTP/HTTPS, JSON-RPC and Ethereum traffic"
 
   ingress {
-    from_port   = 22
-    to_port     = 22
-    protocol    = "TCP"
+    from_port = 22
+    to_port = 22
+    protocol = "TCP"
     cidr_blocks = ["0.0.0.0/0"]
   }
 
   ingress {
-    from_port   = 80
-    to_port     = 80
-    protocol    = "TCP"
+    from_port = 80
+    to_port = 80
+    protocol = "TCP"
     cidr_blocks = ["0.0.0.0/0"]
   }
 
   egress {
-    from_port   = 80
-    to_port     = 80
-    protocol    = "TCP"
+    from_port = 80
+    to_port = 80
+    protocol = "TCP"
     cidr_blocks = ["0.0.0.0/0"]
   }
 
   ingress {
-    from_port   = 443
-    to_port     = 443
-    protocol    = "TCP"
+    from_port = 443
+    to_port = 443
+    protocol = "TCP"
     cidr_blocks = ["0.0.0.0/0"]
   }
   egress {
-    from_port   = 443
-    to_port     = 443
-    protocol    = "TCP"
+    from_port = 443
+    to_port = 443
+    protocol = "TCP"
     cidr_blocks = ["0.0.0.0/0"]
   }
 
   ingress {
-    from_port   = 8545
-    to_port     = 8545
-    protocol    = "TCP"
+    from_port = 8545
+    to_port = 8545
+    protocol = "TCP"
     cidr_blocks = ["0.0.0.0/0"]
   }
   egress {
-    from_port   = 8545
-    to_port     = 8545
-    protocol    = "TCP"
+    from_port = 8545
+    to_port = 8545
+    protocol = "TCP"
     cidr_blocks = ["0.0.0.0/0"]
   }
 
   ingress {
-    from_port   = 30303
-    to_port     = 30303
-    protocol    = "TCP"
+    from_port = 30303
+    to_port = 30303
+    protocol = "TCP"
     cidr_blocks = ["0.0.0.0/0"]
   }
   egress {
-    from_port   = 30303
-    to_port     = 30303
-    protocol    = "TCP"
+    from_port = 30303
+    to_port = 30303
+    protocol = "TCP"
     cidr_blocks = ["0.0.0.0/0"]
   }
   ingress {
-    from_port   = 30303
-    to_port     = 30303
-    protocol    = "UDP"
+    from_port = 30303
+    to_port = 30303
+    protocol = "UDP"
     cidr_blocks = ["0.0.0.0/0"]
   }
   egress {
-    from_port   = 30303
-    to_port     = 30303
-    protocol    = "UDP"
+    from_port = 30303
+    to_port = 30303
+    protocol = "UDP"
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
@@ -104,7 +104,7 @@ resource "aws_ebs_volume" "mogura-geth-hdd"{
 }
 
 resource "aws_volume_attachment" "ebs_att" {
-  device_name="/dev/sdf"
+  device_name = "/dev/sdf"
   volume_id = "${aws_ebs_volume.mogura-geth-hdd.id}"
   instance_id = "${aws_instance.mogura-geth.id}"
   skip_destroy = true
