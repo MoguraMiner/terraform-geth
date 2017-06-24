@@ -15,3 +15,11 @@ variable "ami"{
 variable "private_key_path"{
   default = "~/.ssh/id_rsa"
 }
+
+variable "ebs_size"{
+  default = "500"
+}
+
+variable "ebs_type"{
+  default = "st1"
+}

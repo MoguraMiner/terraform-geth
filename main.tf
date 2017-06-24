@@ -14,6 +14,8 @@ module "geth" {
   instance_type = "${var.instance_type}"
   ami = "${var.ami}"
   private_key_path = "${var.private_key_path}"
+  ebs_size = "${var.ebs_size}"
+  ebs_type = "${var.ebs_type}"
 }
 
 resource "aws_eip" "ip" {

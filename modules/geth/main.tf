@@ -83,11 +83,11 @@ resource "aws_instance" "mogura-geth" {
 }
 
 resource "aws_ebs_volume" "mogura-geth-hdd"{
-   size = "500"
-   type = "st1"
+   size = "${var.ebs_size}"
+   type = "${var.ebs_type}"
    availability_zone = "${var.region}${var.availability_zone}"
    tags{
-     Name = "Mogura-Geth HDD Volume"
+     Name = "Mogura-Geth Data Volume"
    }
 }
 
