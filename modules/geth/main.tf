@@ -45,6 +45,19 @@ resource "aws_security_group" "mogura-geth-security-group" {
   ingress {
     from_port = 8545
     to_port = 8545
+    protocol = "UDP"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  egress {
+    from_port = 8545
+    to_port = 8545
+    protocol = "UDP"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port = 8545
+    to_port = 8545
     protocol = "TCP"
     cidr_blocks = ["0.0.0.0/0"]
   }
